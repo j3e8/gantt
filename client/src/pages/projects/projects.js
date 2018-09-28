@@ -1,4 +1,4 @@
-angular.module('app').controller('mainController', function($scope, ProjectHelper, DateHelper) {
+angular.module('app').controller('projectsController', function($scope, ProjectHelper, DateHelper) {
   $scope.dayWidth = 60;
 
   $scope.projects = [

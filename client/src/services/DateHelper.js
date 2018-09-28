@@ -1,8 +1,12 @@
-angular.module('app').service("DateHelper", function() {
+angular.module('app').service("DateHelper", function(SettingsService) {
   var DateHelper = {};
 
-  DateHelper.addDaysToDate = function(date, days, includeWeekends) {
-    if (includeWeekends) {
+  var defaultOptions = Object.assign({}, SettingsService.settings);
+
+  DateHelper.addDaysToDate = function(date, days, options) {
+    options = options || defaultOptions;
+
+    if (options.includeWeekends) {
       date.setUTCDate(date.getUTCDate() + days);
       return date;
     }

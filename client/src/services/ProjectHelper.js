@@ -70,16 +70,16 @@ angular.module('app').service("ProjectHelper", function(DateHelper) {
         }
         else if (project.finishWith) {
           var tmp = getEndDateOfProject(projects, project.finishWith);
-          project.startDate = DateHelper.addDaysToDate(tmp, -(project.days-1), project.includeWeekends);
+          project.startDate = DateHelper.addDaysToDate(tmp, -(project.days-1), project.options);
         }
         else if (project.startAfter) {
           var tmp = getEndDateOfProject(projects, project.startAfter);
-          project.startDate = DateHelper.addDaysToDate(tmp, 1, project.includeWeekends);
+          project.startDate = DateHelper.addDaysToDate(tmp, 1, project.options);
         }
       }
 
       var e = DateHelper.cloneDate(project.startDate);
-      project.endDate = DateHelper.addDaysToDate(e, project.days-1, project.includeWeekends);
+      project.endDate = DateHelper.addDaysToDate(e, project.days-1, project.options);
     }
   }
 
@@ -162,15 +162,15 @@ angular.module('app').service("ProjectHelper", function(DateHelper) {
     }
     else if (project.startDate) {
       var tmp = DateHelper.cloneDate(project.startDate);
-      return DateHelper.addDaysToDate(tmp, project.days-1, project.includeWeekends);
+      return DateHelper.addDaysToDate(tmp, project.days-1, project.options);
     }
     else if (project.finishWith) {
       var tmp = getEndDateOfProject(projects, project.finishWith);
-      return DateHelper.addDaysToDate(tmp, -(project.days-1), project.includeWeekends);
+      return DateHelper.addDaysToDate(tmp, -(project.days-1), project.options);
     }
     else if (project.startAfter) {
       var tmp = getEndDateOfProject(projects, project.startAfter);
-      return DateHelper.addDaysToDate(tmp, 1, project.includeWeekends);
+      return DateHelper.addDaysToDate(tmp, 1, project.options);
     }
   }
 
